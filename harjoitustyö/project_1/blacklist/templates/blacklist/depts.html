@@ -1,0 +1,47 @@
+<head>
+    <title>BlackList</title>
+</head>
+
+
+<body>
+    <h1>BlackList</h1>
+
+    <table>
+    <tr>
+    <th style="text-align:left">Username: <td>{{user.username}} 
+    </table>
+
+
+    <form action='logout/' method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Logout"/>
+    </form>
+    
+    <h2>Naughty people</h2>
+
+    <ul>
+    {% for a in accounts %}
+
+    <li>{{a}}
+    </li>
+
+    {% endfor %}
+    </ul>
+
+
+    <h2>New Naughty One</h2>
+
+    <form action='add/' method="POST">
+        {% csrf_token %}
+        <input type="text" name="person"/><br/>
+        <input type="number" name= "dept"/><br/>
+        <input type="submit" value="Send"/>
+    </form>
+
+    <h2>Well done!</h2>
+    <form action='remove/' method="POST">
+        {% csrf_token %}
+        <input type="text" name="person"/><br/>
+        <input type="submit" value="remove"/>
+    </form>
+</body>
